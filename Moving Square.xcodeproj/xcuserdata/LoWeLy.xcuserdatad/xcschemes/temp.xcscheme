@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1099F3FD19A5194800A82065"
-               BuildableName = "temp.app"
-               BlueprintName = "temp"
-               ReferencedContainer = "container:temp.xcodeproj">
+               BuildableName = "Moving Square.app"
+               BlueprintName = "Moving Square"
+               ReferencedContainer = "container:Moving Square.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1099F41E19A5194800A82065"
-               BuildableName = "tempTests.xctest"
-               BlueprintName = "tempTests"
-               ReferencedContainer = "container:temp.xcodeproj">
+               BuildableName = "Moving SquareTests.xctest"
+               BlueprintName = "Moving SquareTests"
+               ReferencedContainer = "container:Moving Square.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1099F3FD19A5194800A82065"
-            BuildableName = "temp.app"
-            BlueprintName = "temp"
-            ReferencedContainer = "container:temp.xcodeproj">
+            BuildableName = "Moving Square.app"
+            BlueprintName = "Moving Square"
+            ReferencedContainer = "container:Moving Square.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1099F3FD19A5194800A82065"
-            BuildableName = "temp.app"
-            BlueprintName = "temp"
-            ReferencedContainer = "container:temp.xcodeproj">
+            BuildableName = "Moving Square.app"
+            BlueprintName = "Moving Square"
+            ReferencedContainer = "container:Moving Square.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1099F3FD19A5194800A82065"
-            BuildableName = "temp.app"
-            BlueprintName = "temp"
-            ReferencedContainer = "container:temp.xcodeproj">
+            BuildableName = "Moving Square.app"
+            BlueprintName = "Moving Square"
+            ReferencedContainer = "container:Moving Square.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
