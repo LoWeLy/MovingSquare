@@ -120,10 +120,11 @@
             if (currentSpeed > maxSpeed) {
                 maxSpeed = currentSpeed;
             }
-            dispatch_sync(dispatch_get_main_queue(),^{
-                if (!movingSquare.needsDisplay && ![movingSquare animationForKey:@"position"]) {
-                    CGPoint point = CGPointMake(x, y);
+            if (!movingSquare.needsDisplay && ![movingSquare animationForKey:@"position"]) {
+                dispatch_sync(dispatch_get_main_queue(),^{
                     
+                    
+                    CGPoint point = CGPointMake(x, y);
                     noAnimation.fromValue = [movingSquare valueForKey:@"position"];
                     noAnimation.toValue = [NSValue valueWithCGPoint:point];
                     noAnimation.duration = 0.1;
@@ -132,17 +133,19 @@
                     [movingSquare addAnimation:noAnimation forKey:@"position"];
                     
                     [movingSquare setNeedsDisplay];
-//                    [movingSquare removeAllAnimations];
-                } else {
-                    usleep(34000);
-                }
-                if (!dot.needsDisplay) {
-//                    [dot removeAllAnimations];
-                    [dot setNeedsDisplay];
-                }
-                _currentSpeedLabel.text = [NSString stringWithFormat:@"Current speed: %.3f",currentSpeed];
-                _maxSpeedLabel.text = [NSString stringWithFormat:@"Max speed: %.3f",maxSpeed];
-            });
+                    //                    [movingSquare removeAllAnimations];
+                    
+                    if (!dot.needsDisplay) {
+                        //                    [dot removeAllAnimations];
+                        [dot setNeedsDisplay];
+                    }
+                    _currentSpeedLabel.text = [NSString stringWithFormat:@"Current speed: %.3f",currentSpeed];
+                    _maxSpeedLabel.text = [NSString stringWithFormat:@"Max speed: %.3f",maxSpeed];
+                });
+            } else {
+                usleep(100000);
+                [movingSquare removeAllAnimations];
+            }
         }
     });
 }
