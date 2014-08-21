@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface g12ViewController : UIViewController
-
+ 
 - (IBAction)arc4randomPunch:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *currentSpeedLabel;
 @property (strong, nonatomic) IBOutlet UILabel *maxSpeedLabel;
