@@ -47,8 +47,10 @@
     speedAndAngleDisplay.frame = CGRectMake(self.view.bounds.size.width - displayerSize, self.view.bounds.size.height - displayerSize, displayerSize, displayerSize);
     speedAndAngleDisplay.borderColor = [UIColor blackColor].CGColor;
     speedAndAngleDisplay.borderWidth = 1.0;
+    speedAndAngleDisplay.masksToBounds = YES;
     moveSpace.layer.borderColor = [UIColor blackColor].CGColor;
     moveSpace.layer.borderWidth = 1.0;
+    moveSpace.layer.masksToBounds = YES;
     
     dot.backgroundColor = [UIColor blackColor].CGColor;
     
@@ -116,26 +118,24 @@
                 maxSpeed = currentSpeed;
             }
 
-            dispatch_sync(dispatch_get_main_queue(),^{
+            dispatch_async(dispatch_get_main_queue(),^{
                 //                    [movingSquare setTransform:CGAffineTransformMakeTranslation(x, y)];
                 [CATransaction begin];
                 [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
                 movingSquare.layer.position = CGPointMake(x, y);
-                [movingSquare setNeedsDisplay];
+//                [movingSquare setNeedsDisplay];
                 [CATransaction commit];
                 
-                if (!dot.needsDisplay) {
-                    if (dotMoveToDefaultPosition) {
+                if (!dot.needsDisplay && dotMoveToDefaultPosition) {
                         dot.position = CGPointMake(displayerSize / 2, displayerSize / 2);
                         dotMoveToDefaultPosition = NO;
-                    }
-                    [dot setNeedsDisplay];
+//                        [dot setNeedsDisplay];
                 }
                 _currentSpeedLabel.text = [NSString stringWithFormat:@"Current speed: %.3f",currentSpeed];
                 _maxSpeedLabel.text = [NSString stringWithFormat:@"Max speed: %.3f",maxSpeed];
             });
             
-            usleep(30000);
+            usleep(20000);
         }
     });
 }
