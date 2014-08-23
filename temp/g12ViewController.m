@@ -124,7 +124,7 @@
                 maxSpeed = currentSpeed;
             }
             if (!movingSquare.layer.needsDisplay) {
-                dispatch_sync(dispatch_get_main_queue(),^{
+                dispatch_async(dispatch_get_main_queue(),^{
                     
                     [movingSquare setTransform:CGAffineTransformMakeTranslation(x, y)];
 
