@@ -35,7 +35,7 @@
 	// Do any additional setup after loading the view, typically from a nib..
 //    CABasicAnimation *noAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
     
-    moveSpace = [[UIView alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.height - 20 - displayerSize)];
+    moveSpace = [[UIView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20 - displayerSize)];
     movingSquare = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size, size)];
     dot = [CALayer layer];
     speedAndAngleDisplay = [CALayer layer];
@@ -49,7 +49,7 @@
     [dot setMasksToBounds:YES];
     [dot setCornerRadius:radius];
     dot.frame = CGRectMake(displayerSize / 2 - radius, displayerSize / 2 - radius, radius * 2, radius * 2);
-    speedAndAngleDisplay.frame = CGRectMake(self.view.bounds.size.width - displayerSize, self.view.bounds.size.height - displayerSize, displayerSize, displayerSize);
+    speedAndAngleDisplay.frame = CGRectMake(self.view.frame.size.width - displayerSize, self.view.frame.size.height - displayerSize, displayerSize, displayerSize);
     speedAndAngleDisplay.borderColor = [UIColor blackColor].CGColor;
     speedAndAngleDisplay.borderWidth = 1.0;
     moveSpace.layer.borderColor = [UIColor blackColor].CGColor;
@@ -170,6 +170,19 @@
         dot.position = CGPointMake(displayerSize / 2 + addSpeed * cos(M_PI/180.0*angle) / 2, displayerSize / 2 + addSpeed * sin(M_PI/180.0*angle) / 2);
         [dot setNeedsDisplay];
     });
+}
+
+- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
+        moveSpace.frame = CGRectMake(0, 20, self.view.frame.size.height, self.view.frame.size.width - 20 - displayerSize);
+        speedAndAngleDisplay.frame = CGRectMake(self.view.frame.size.height - displayerSize, self.view.frame.size.width - displayerSize, displayerSize, displayerSize);
+    } else if (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        moveSpace.frame = CGRectMake(0, 20, self.view.frame.size.height, self.view.frame.size.width - 20 - displayerSize);
+        speedAndAngleDisplay.frame = CGRectMake(self.view.frame.size.height - displayerSize, self.view.frame.size.width - displayerSize, displayerSize, displayerSize);
+    } else if (toInterfaceOrientation == UIInterfaceOrientationPortrait) {
+        moveSpace.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20 - displayerSize);
+        speedAndAngleDisplay.frame = CGRectMake(self.view.frame.size.width - displayerSize, self.view.frame.size.height - displayerSize, displayerSize, displayerSize);
+    }
 }
 
 @end
